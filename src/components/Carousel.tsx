@@ -67,7 +67,7 @@ export default function CarouselMovies(props: MovieCarouselProps) {
                 responsiveOptions={responsiveOptions} 
                 itemTemplate={moviesTemplate} 
                 autoplayInterval={10000}
-                circular={false} // Supprime les boutons de défilement
+                circular={false}
             />
         </div>
     )

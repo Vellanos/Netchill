@@ -1,3 +1,9 @@
+  /* Style color */
+  .color-red {
+    color: rgb(228, 36, 36);
+  }
+
+/* Style Carousel */
 .carouselContainer {
     display: flex;
     justify-content: center;
@@ -17,7 +23,7 @@
 }
 
 .carousel-image {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .p-carousel-indicators {
@@ -29,3 +35,79 @@
         box-shadow: none
     }
   }
+
+  /* Style Herobanner */
+.herobanner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.herobanner {
+    width: 90%;
+    height: 70dvh;
+    background: rgba(0, 0, 0, 0.7);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-clip: padding-box;
+    margin: 20px 0;
+    align-self: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.herobanner-text-container {
+    height: 100%;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+}
+
+.herobanner-text-container h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.herobanner-text-container p {
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
+/* Pagination style */
+
+.pagination {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Movie Page Style */
+
+.movie-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.movie-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Card Movie style */
+
+.card-movie {
+    text-align: center;
+    width: 350px;
+    height: 600px;
+}

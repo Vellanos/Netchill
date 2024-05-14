@@ -1,24 +1,28 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Navbar from "@/components/Navbar";
+// import Navbar from "@/components/Navbar";
 import { getPopularMovies, getRatedMovies, getUpcomingMovies } from "./lib/api_request";
 import { PrimeReactProvider } from "primereact/api";
 import CarouselMovies from "@/components/Carousel";
+import Herobanner from "@/components/Herobanner";
 
-import "primereact/resources/themes/lara-light-cyan/theme.css";
-import "primeicons/primeicons.css";
+
 
 export default function Home() {
   const [popularMovies, setPopularMovies] = useState<any[]>([]);
   const [ratedMovies, setRatedMovies] = useState<any[]>([]);
   const [upcomingMovies, setUpcomingMovies] = useState<any[]>([]);
+  const [randomBgHeroBanner, setRandomBgHeroBanner] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchPopularMoviesData = async () => {
       try {
         const data = await getPopularMovies();
         setPopularMovies(data.results);
+        
+        const randomIndex = Math.floor(Math.random() * data.results.length);
+        setRandomBgHeroBanner(data.results[randomIndex].backdrop_path)
       } catch (error: any) {
         console.error("Error fetching popular movies:", error.message);
       }
@@ -55,7 +59,8 @@ export default function Home() {
 
   return (
     <PrimeReactProvider>
-      <Navbar />
+      {/* <Navbar /> */}
+      <Herobanner bgHeroBanner={randomBgHeroBanner}/>
       <CarouselMovies moviesFetch={popularMovies}/>
       <CarouselMovies moviesFetch={ratedMovies}/>
       <CarouselMovies moviesFetch={upcomingMovies}/>

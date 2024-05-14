@@ -1,37 +1,42 @@
-
+"use client"
 import React from 'react';
 import { Menubar } from 'primereact/menubar';
-import { MenuItem } from 'primereact/menuitem';
-import { Badge } from 'primereact/badge';
+import Link from 'next/link';
 
-export default function TemplateDemo() {
+export default function Navbar() {
     const itemRenderer = (item:any) => (
-        <a className="flex align-items-center p-menuitem-link">
+        <Link href={`/${item.link}${item.link.length > 0 ? '/1':''}`} className="flex align-items-center p-menuitem-link">
             <span className={item.icon} />
             <span className="mx-2">{item.label}</span>
-            {item.badge && <Badge className="ml-auto" value={item.badge} />}
-            {item.shortcut && <span className="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{item.shortcut}</span>}
-        </a>
+        </Link>
     );
-    const items: MenuItem[] = [
+    const items = [
         {
             label: 'Home',
-            icon: 'pi pi-home'
+            icon: 'pi pi-home',
+            link: '',
+            template: itemRenderer
         },
         {
-            label: 'Projects',
+            label: 'Rechercher',
             icon: 'pi pi-search',
             items: [
                 {
                     label: 'Les populaires',
+                    icon: 'pi pi-star',
+                    link: 'popular',
                     template: itemRenderer
                 },
                 {
                     label: 'Les mieux notés',
+                    icon: 'pi pi-thumbs-up',
+                    link: 'rated',
                     template: itemRenderer
                 },
                 {
-                    label: 'Prochianes sorties',
+                    label: 'Prochaines sorties',
+                    icon: 'pi pi-calendar',
+                    link: 'upcoming',
                     template: itemRenderer
                 },
             ]
@@ -44,6 +49,5 @@ export default function TemplateDemo() {
         <div className="card">
             <Menubar model={items} start={start}/>
         </div>
-    )
+    );
 }
-        
