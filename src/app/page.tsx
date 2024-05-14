@@ -1,95 +1,64 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import Navbar from "@/components/Navbar";
+import { getPopularMovies, getRatedMovies, getUpcomingMovies } from "./lib/api_request";
+import { PrimeReactProvider } from "primereact/api";
+import CarouselMovies from "@/components/Carousel";
+
+import "primereact/resources/themes/lara-light-cyan/theme.css";
+import "primeicons/primeicons.css";
 
 export default function Home() {
+  const [popularMovies, setPopularMovies] = useState<any[]>([]);
+  const [ratedMovies, setRatedMovies] = useState<any[]>([]);
+  const [upcomingMovies, setUpcomingMovies] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchPopularMoviesData = async () => {
+      try {
+        const data = await getPopularMovies();
+        setPopularMovies(data.results);
+      } catch (error: any) {
+        console.error("Error fetching popular movies:", error.message);
+      }
+    };
+
+    fetchPopularMoviesData();
+  }, []);
+
+  useEffect(() => {
+    const fetchRatedMoviesData = async () => {
+      try {
+        const data = await getRatedMovies();
+        setRatedMovies(data.results);
+      } catch (error: any) {
+        console.error("Error fetching rated movies:", error.message);
+      }
+    };
+
+    fetchRatedMoviesData();
+  }, []);
+
+  useEffect(() => {
+    const fetchUpcomingMoviesData = async () => {
+      try {
+        const data = await getUpcomingMovies();
+        setUpcomingMovies(data.results);
+      } catch (error: any) {
+        console.error("Error fetching upcoming movies:", error.message);
+      }
+    };
+
+    fetchUpcomingMoviesData();
+  }, []);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <PrimeReactProvider>
+      <Navbar />
+      <CarouselMovies moviesFetch={popularMovies}/>
+      <CarouselMovies moviesFetch={ratedMovies}/>
+      <CarouselMovies moviesFetch={upcomingMovies}/>
+    </PrimeReactProvider>
   );
 }
