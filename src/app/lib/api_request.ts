@@ -72,3 +72,39 @@ export const getSpecificPopularMovies = async (pageNumber:string) => {
     throw new Error('Error fetching popular movies: ' + error.message);
   }
 }
+
+export const getSpecificRatedMovies = async (pageNumber:string) => {
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${api_key}`
+    }
+  };
+
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=fr-FR&page=${pageNumber}`, options);
+    const data = await response.json();
+    return data;
+  } catch (error:any) {
+    throw new Error('Error fetching rated movies: ' + error.message);
+  }
+}
+
+export const getSpecificUpcomingMovies = async (pageNumber:string) => {
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${api_key}`
+    }
+  };
+
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/upcoming?language=fr-FR&page=${pageNumber}`, options);
+    const data = await response.json();
+    return data;
+  } catch (error:any) {
+    throw new Error('Error fetching rated movies: ' + error.message);
+  }
+}

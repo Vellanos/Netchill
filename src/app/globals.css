@@ -94,6 +94,10 @@
 
 /* Movie Page Style */
 
+.titre-center {
+    text-align: center;
+}
+
 .movie-page-container {
     display: flex;
     flex-direction: column;

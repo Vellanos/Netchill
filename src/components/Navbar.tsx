@@ -18,8 +18,8 @@ export default function Navbar() {
             template: itemRenderer
         },
         {
-            label: 'Rechercher',
-            icon: 'pi pi-search',
+            label: 'Nos sélections',
+            icon: 'pi pi-shopping-bag',
             items: [
                 {
                     label: 'Les populaires',

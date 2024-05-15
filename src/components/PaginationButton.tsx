@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const PaginationButton = ({ direction, newPage}) => {
+const PaginationButton = ({ direction, newPage, cat}) => {
   const arrowDirection =
     direction === "left" ? "chevron-left" : "chevron-right";
 
@@ -15,7 +15,7 @@ const PaginationButton = ({ direction, newPage}) => {
 
   return (
     <Link
-      href={`/popular/${newPage}`}
+      href={`/${cat}/${newPage}`}
       style={{
         backgroundColor: "#007bff",
         color: "#fff",

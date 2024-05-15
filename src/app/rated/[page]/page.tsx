@@ -1,41 +1,41 @@
 "use client";
 import { useParams } from "next/navigation";
-import { getSpecificPopularMovies } from "@/app/lib/api_request";
+import { getSpecificRatedMovies } from "@/app/lib/api_request";
 import { useEffect, useState } from "react";
 import PaginationButton from "@/components/PaginationButton";
 import CardMovie from "@/components/CardMovie";
 import { Skeleton } from 'primereact/skeleton';
         
 
-function popularPage() {
-  const [specificPopularMovies, setSpecificPopularMovies] = useState<any[]>([]);
+function ratedPage() {
+  const [specificRatedMovies, setSpecificRatedMovies] = useState<any[]>([]);
   const params = useParams();
   const page = parseInt(params.page, 10);
 
   useEffect(() => {
-    const fetchSpecificPopularMoviesData = async () => {
+    const fetchSpecificRatedMoviesData = async () => {
       try {
-        const data = await getSpecificPopularMovies(page);
-        setSpecificPopularMovies(data.results);
+        const data = await getSpecificRatedMovies(page);
+        setSpecificRatedMovies(data.results);
       } catch (error: any) {
-        console.error("Error fetching popular movies:", error.message);
+        console.error("Error fetching rated movies:", error.message);
       }
     };
 
-    fetchSpecificPopularMoviesData();
+    fetchSpecificRatedMoviesData();
   }, [page]);
 
   return (
     <div className="movie-page-container">
-      <h1 className="titre-center">Notre sélection de film populaire</h1>
+      <h1 className="titre-center">Les films préférés des utilisateurs</h1>
       <div className="pagination">
-        <PaginationButton direction={"left"} newPage={page - 1} cat={"popular"}/>
+        <PaginationButton direction={"left"} newPage={page - 1} cat={"rated"}/>
         <p>{page}</p>
-        <PaginationButton direction={"right"} newPage={page + 1} cat={"popular"}/>
+        <PaginationButton direction={"right"} newPage={page + 1} cat={"rated"}/>
       </div>
-      {specificPopularMovies && specificPopularMovies.length > 0  ? (
+      {specificRatedMovies && specificRatedMovies.length > 0  ? (
         <div className="movie-container">
-          {specificPopularMovies.map((movie, index) => (
+          {specificRatedMovies.map((movie, index) => (
             <CardMovie
               key={index}
               title={movie.title}
@@ -51,13 +51,13 @@ function popularPage() {
         </div>
       )}
       <div className="pagination">
-        <PaginationButton direction={"left"} newPage={page - 1} cat={"popular"}/>
+        <PaginationButton direction={"left"} newPage={page - 1} cat={"rated"}/>
         <p>{page}</p>
-        <PaginationButton direction={"right"} newPage={page + 1} cat={"popular"}/>
+        <PaginationButton direction={"right"} newPage={page + 1} cat={"rated"}/>
       </div>
     </div>
   );
 
 }
 
-export default popularPage;
+export default ratedPage;
