@@ -13,7 +13,7 @@ export default function Home() {
   const [popularMovies, setPopularMovies] = useState<any[]>([]);
   const [ratedMovies, setRatedMovies] = useState<any[]>([]);
   const [upcomingMovies, setUpcomingMovies] = useState<any[]>([]);
-  const [randomBgHeroBanner, setRandomBgHeroBanner] = useState<any[]>([]);
+  const [bgHeroBanner, setBgHeroBanner] = useState<any[]>([]);
 
   useEffect(() => {
     const fetchPopularMoviesData = async () => {
@@ -22,7 +22,7 @@ export default function Home() {
         setPopularMovies(data.results);
         
         const randomIndex = Math.floor(Math.random() * data.results.length);
-        setRandomBgHeroBanner(data.results[randomIndex].backdrop_path)
+        setBgHeroBanner(data.results[0].backdrop_path)
       } catch (error: any) {
         console.error("Error fetching popular movies:", error.message);
       }
@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <PrimeReactProvider>
       {/* <Navbar /> */}
-      <Herobanner bgHeroBanner={randomBgHeroBanner}/>
+      <Herobanner bgHeroBanner={bgHeroBanner}/>
       <CarouselMovies moviesFetch={popularMovies}/>
       <CarouselMovies moviesFetch={ratedMovies}/>
       <CarouselMovies moviesFetch={upcomingMovies}/>
