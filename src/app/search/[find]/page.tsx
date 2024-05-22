@@ -2,9 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { searchMovies } from "@/app/lib/api_request";
-import Image from "next/image";
-import defaultImage from "../../../../public/defaut.jpeg";
-import Link from "next/link";
 import { Skeleton } from "primereact/skeleton";
 import CardMovie from "@/components/CardMovie";
 

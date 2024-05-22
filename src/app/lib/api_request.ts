@@ -127,7 +127,7 @@ export const getDetailsMovie = async (id: string) => {
   }
 };
 
-export const searchMovies = async (query: string) => {
+export const searchMovies = async (find: string) => {
   const options = {
     method: 'GET',
     headers: {
@@ -137,7 +137,7 @@ export const searchMovies = async (query: string) => {
   };
 
   try {
-    const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=fr-FR&page=1`, options);
+    const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${find}&include_adult=false&language=fr-FR&page=1`, options);
     const data = await response.json();
     return data;
   } catch (error:any) {
