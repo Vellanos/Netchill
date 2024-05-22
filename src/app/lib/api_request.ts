@@ -55,7 +55,7 @@ export const getUpcomingMovies = async () => {
 
 }
 
-export const getSpecificPopularMovies = async (pageNumber:string) => {
+export const getSpecificPopularMovies = async (pageNumber:number) => {
   const options = {
     method: 'GET',
     headers: {
@@ -73,7 +73,7 @@ export const getSpecificPopularMovies = async (pageNumber:string) => {
   }
 }
 
-export const getSpecificRatedMovies = async (pageNumber:string) => {
+export const getSpecificRatedMovies = async (pageNumber:number) => {
   const options = {
     method: 'GET',
     headers: {
@@ -91,7 +91,7 @@ export const getSpecificRatedMovies = async (pageNumber:string) => {
   }
 }
 
-export const getSpecificUpcomingMovies = async (pageNumber:string) => {
+export const getSpecificUpcomingMovies = async (pageNumber:number) => {
   const options = {
     method: 'GET',
     headers: {
@@ -108,3 +108,21 @@ export const getSpecificUpcomingMovies = async (pageNumber:string) => {
     throw new Error('Error fetching rated movies: ' + error.message);
   }
 }
+
+export const getDetailsMovie = async (id: string) => {
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${api_key}`
+    }
+  };
+
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?language=fr-FR`, options);
+    const data = await response.json();
+    return data;
+  } catch (error:any) {
+    throw new Error('Error fetching movie details: ' + error.message);
+  }
+};

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-// import Navbar from "@/components/Navbar";
 import { getPopularMovies, getRatedMovies, getUpcomingMovies } from "./lib/api_request";
 import { PrimeReactProvider } from "primereact/api";
 import CarouselMovies from "@/components/Carousel";
@@ -59,7 +58,6 @@ export default function Home() {
 
   return (
     <PrimeReactProvider>
-      {/* <Navbar /> */}
       <Herobanner bgHeroBanner={bgHeroBanner}/>
       <CarouselMovies moviesFetch={popularMovies}/>
       <CarouselMovies moviesFetch={ratedMovies}/>

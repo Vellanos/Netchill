@@ -9,7 +9,7 @@ import { Skeleton } from 'primereact/skeleton';
 
 function popularPage() {
   const [specificPopularMovies, setSpecificPopularMovies] = useState<any[]>([]);
-  const params = useParams();
+  const params:{page:string} = useParams();
   const page = parseInt(params.page, 10);
 
   useEffect(() => {
@@ -40,6 +40,7 @@ function popularPage() {
               key={index}
               title={movie.title}
               imagePath={movie.poster_path}
+              id={movie.id}
             />
           ))}
         </div>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-const PaginationButton = ({ direction, newPage, cat}) => {
+const PaginationButton = ({ direction, newPage, cat} : {direction:string, newPage:number, cat:string}) => {
   const arrowDirection =
     direction === "left" ? "chevron-left" : "chevron-right";
 

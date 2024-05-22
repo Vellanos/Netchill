@@ -9,7 +9,7 @@ import { Skeleton } from 'primereact/skeleton';
 
 function ratedPage() {
   const [specificRatedMovies, setSpecificRatedMovies] = useState<any[]>([]);
-  const params = useParams();
+  const params:{page:string} = useParams();
   const page = parseInt(params.page, 10);
 
   useEffect(() => {
@@ -40,6 +40,7 @@ function ratedPage() {
               key={index}
               title={movie.title}
               imagePath={movie.poster_path}
+              id={movie.id}
             />
           ))}
         </div>
