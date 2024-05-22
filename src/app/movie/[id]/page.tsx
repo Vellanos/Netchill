@@ -4,6 +4,7 @@ import { getDetailsMovie } from "@/app/lib/api_request";
 import { useEffect, useState } from "react";
 import MovieDetails from "@/components/MovieDetails";
 
+
 function detailsPage() {
   const [detailsMovie, setDetailsMovie] = useState<any>(null);
   const params:{id:string} = useParams();

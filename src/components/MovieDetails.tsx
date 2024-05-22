@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "primereact/card";
 import Image from "next/image";
+import defaultImage from "../../public/defaut.jpeg";
 
 export default function MovieDetails({
   title,
@@ -17,7 +18,7 @@ export default function MovieDetails({
     <div className="card-details-container">
       <Card title={title} className="card-details">
         <Image
-          src={`https://www.themoviedb.org/t/p/original/${imagePath}`}
+          src={imagePath ? `https://www.themoviedb.org/t/p/original/${imagePath}` : defaultImage}
           className="carousel-image"
           alt={title}
           width={250}

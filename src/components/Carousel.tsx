@@ -1,6 +1,8 @@
 import React from 'react';
 import { Carousel, CarouselResponsiveOption } from 'primereact/carousel';
 import Image from 'next/image';
+import defaultImage from "../../public/defaut.jpeg";
+import Link from 'next/link';
 
 
 interface Movie {
@@ -42,13 +44,15 @@ export default function CarouselMovies(props: MovieCarouselProps) {
             <div className='carousel'>
                 <div>
                     {movie.poster_path && (
+                        <Link href={`/movie/${movie.id}`}>
                         <Image 
-                            src={`https://www.themoviedb.org/t/p/original/${movie.poster_path}`}
+                            src={movie.poster_path ? `https://www.themoviedb.org/t/p/original/${movie.poster_path}` : defaultImage}
                             className='carousel-image'
                             alt={movie.title} 
                             width={250}
                             height={400}
                         />
+                        </Link>
                     )}
                 </div>
                 <div>

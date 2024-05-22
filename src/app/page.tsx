@@ -59,8 +59,11 @@ export default function Home() {
   return (
     <PrimeReactProvider>
       <Herobanner bgHeroBanner={bgHeroBanner}/>
+      <h2 className="titre-carousel">Nos films populaires</h2>
       <CarouselMovies moviesFetch={popularMovies}/>
+      <h2 className="titre-carousel">Nos films les mieux notés</h2>
       <CarouselMovies moviesFetch={ratedMovies}/>
+      <h2 className="titre-carousel">Nos films à venir</h2>
       <CarouselMovies moviesFetch={upcomingMovies}/>
     </PrimeReactProvider>
   );

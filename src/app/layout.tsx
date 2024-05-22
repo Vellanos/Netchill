@@ -4,6 +4,7 @@ import "./globals.css";
 import "primereact/resources/themes/lara-light-cyan/theme.css";
 import "primeicons/primeicons.css";
 import Navbar from "@/components/Navbar";
+import SearchBar from "@/components/SearchBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={inter.className}>
       <Navbar />
+      <SearchBar></SearchBar>
         <main>
           {children}
         </main>

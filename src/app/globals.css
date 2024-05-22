@@ -36,6 +36,11 @@
     display: none !important;
 }
 
+.titre-carousel {
+    margin-left: 20px;
+    text-align: center;
+}
+
 @media screen and (max-width: 600px) {
     .carousel-image {
         box-shadow: none
@@ -141,4 +146,41 @@ a {
     display: flex;
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+}
+
+/* SearchBar style */
+
+.searchbar-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.searchbar-input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-right: none; /* Supprime la bordure droite pour fusionner avec le bouton */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+    font-size: 16px;
+}
+
+.searchbar-button {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-left: none; /* Supprime la bordure gauche pour fusionner avec la barre de recherche */
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px;
+    transition: background-color 0.3s ease;
+}
+
+.searchbar-button:hover {
+    background-color: #0056b3;
 }
