@@ -19,7 +19,7 @@ const SearchPage = () => {
         console.error(error);
       }
     };
-
+    
     fetchSearchPage();
   }, [find]);
 
